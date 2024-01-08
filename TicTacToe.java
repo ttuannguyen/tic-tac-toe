@@ -29,13 +29,15 @@ public class TicTacToe {
 
     }
 
-    // public static int[] askUser(char[][] board) {
-    //     System.out.println("\nPlease pick a row and column number");
+    public static int[] askUser(char[][] board) {
 
-    //     int row = scan.nextInt();
-    //     int element = scan.nextInt();
-    //     return new int[] {row, element};
-    // }
+        System.out.println("\nPick a row and column number");
+
+        int row = scan.nextInt();
+        int element = scan.nextInt();
+
+        return new int[] {row, element};
+    }
 
     public static void printBoard(char[][] board) {
         System.out.print("\n");  
