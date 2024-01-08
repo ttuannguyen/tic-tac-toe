@@ -15,10 +15,27 @@ public class TicTacToe {
           };
 
         
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Turn: X");
+            } else {
+                System.out.println("Turn: O");
+            }
+        }
+
+        
         printBoard(board);  
 
 
     }
+
+    // public static int[] askUser(char[][] board) {
+    //     System.out.println("\nPlease pick a row and column number");
+
+    //     int row = scan.nextInt();
+    //     int element = scan.nextInt();
+    //     return new int[] {row, element};
+    // }
 
     public static void printBoard(char[][] board) {
         System.out.print("\n");  
