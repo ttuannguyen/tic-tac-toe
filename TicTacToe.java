@@ -49,6 +49,27 @@ public class TicTacToe {
         // returning a new integer array holding the row and column
     }
 
+    public static int checkWin(char[][] board) {
+        int rows = checkRows(board);
+        // if (Math.abs(rows) == 3) {
+        // }
+        return 0;
+    }
+
+    public static int checkRows(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 'X') {
+                    count++;
+                } else if (board[i][j] == 'O') {
+                    count--;
+                }
+            }
+        }
+        return count;
+    }
+
     public static void printBoard(char[][] board) {
         System.out.print("\n");  
         for (int i = 0; i < board.length; i++) {
