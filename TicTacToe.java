@@ -39,7 +39,14 @@ public class TicTacToe {
         int row = scan.nextInt();
         int element = scan.nextInt();
 
+        while (board[row][element] != '_') {
+            System.out.println("Spot taken! Try again.");
+            row = scan.nextInt();
+            element = scan.nextInt();
+        }
+
         return new int[] {row, element};
+        // returning a new integer array holding the row and column
     }
 
     public static void printBoard(char[][] board) {
