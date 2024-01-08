@@ -18,11 +18,14 @@ public class TicTacToe {
         for (int i = 0; i < 9; i++) {
             if (i % 2 == 0) {
                 System.out.println("Turn: X");
+                int[] spot = askUser(board);
+                board[spot[0]][spot[1]] = 'X';
             } else {
                 System.out.println("Turn: O");
+                int[] spot = askUser(board);
+                board[spot[0]][spot[1]] = 'O';
             }
         }
-
         
         printBoard(board);  
 
@@ -31,7 +34,7 @@ public class TicTacToe {
 
     public static int[] askUser(char[][] board) {
 
-        System.out.println("\nPick a row and column number");
+        System.out.print("Pick a row and column number");
 
         int row = scan.nextInt();
         int element = scan.nextInt();
