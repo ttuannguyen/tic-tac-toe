@@ -8,6 +8,7 @@ public class TicTacToe {
         
         System.out.println("\nLet's play tic tac toe");
 
+        // 1. Initialize the board with a 2D array.
         char[][] board = {
             { '_', '_', '_' }, 
             { '_', '_', '_' }, 
@@ -15,9 +16,11 @@ public class TicTacToe {
           };
 
         
+        // 3. For loop to handle each turn (of the 9 turns) of the player.
         for (int i = 0; i < 9; i++) {
             if (i % 2 == 0) {
                 System.out.println("Turn: X");
+                // Obtain the user's input for chosen position and assign it to the board
                 int[] spot = askUser(board);
                 board[spot[0]][spot[1]] = 'X';
             } else {
@@ -25,16 +28,30 @@ public class TicTacToe {
                 int[] spot = askUser(board);
                 board[spot[0]][spot[1]] = 'O';
             }
-        }
-        
-        printBoard(board);  
 
+            printBoard(board);  
+
+            // 7. Conditional to announce the result
+            int count = checkWin(board);
+
+            if (count == 3) {
+                System.out.println("X wins!");
+            } else if (count == -3) {
+                System.out.println("O wins");
+            } else if (i == 8) {
+                System.out.println("No one wins!");
+            }
+
+
+        }
+    
 
     }
 
+    // 4. Function to ask and get the user's input each turn
     public static int[] askUser(char[][] board) {
 
-        System.out.print("Pick a row and column number");
+        System.out.print(" - Pick a row and column number: ");
 
         int row = scan.nextInt();
         int element = scan.nextInt();
@@ -46,18 +63,28 @@ public class TicTacToe {
         }
 
         return new int[] {row, element};
-        // returning a new integer array holding the row and column
+        // returning a new integer array holding the position of row and column
     }
 
+    
+    // 5. Function to check for the win
     public static int checkWin(char[][] board) {
         int rows = checkRows(board);
-        // if (Math.abs(rows) == 3) {
-        // }
-        return 0;
+        if (Math.abs(rows) == 3)
+            return rows;
+        
+        
+
+        // placeholder
+        return -1;
     }
 
+    
+    // 6. Functions to check for rows and columns
     public static int checkRows(char[][] board) {
         int count = 0;
+        
+        // Operating logic: count X with ++ and count O with -- 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == 'X') {
@@ -70,6 +97,7 @@ public class TicTacToe {
         return count;
     }
 
+    // 2. Function to print the board 
     public static void printBoard(char[][] board) {
         System.out.print("\n");  
         for (int i = 0; i < board.length; i++) {
