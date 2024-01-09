@@ -64,8 +64,9 @@ public class TicTacToe {
             element = scan.nextInt();
         }
 
-        return new int[] {row, element};
         // returning a new integer array holding the position of row and column
+        return new int[] {row, element};
+        
     }
 
     
@@ -79,12 +80,20 @@ public class TicTacToe {
         if (Math.abs(columns) == 3)
             return columns;
 
+        int leftDiagonal = checkLeftDiagonal(board);
+        if (Math.abs(rows) == 3)
+            return leftDiagonal;
+
+        int rightDiagonal = checkRightDiagonal(board);
+        if (Math.abs(rows) == 3)
+            return rightDiagonal;
+
         // placeholder
         return -1;
     }
 
     
-    // 6. Functions to check for rows and columns
+    // 6. Functions to check for rows, columns, and diagonals
     public static int checkRows(char[][] board) {
         int count = 0;
         
@@ -116,6 +125,35 @@ public class TicTacToe {
         }
         return count;
     }
+
+    
+    public static int checkLeftDiagonal(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][i] == 'X') {
+                    count++;
+                } else if (board[i][i] == 'O') {
+                    count--;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int checkRightDiagonal(char[][] board) {
+        int count = 0;
+         for (int i = 0; i < board.length; i++) {
+            if (board[2 - i][i] == 'X') {
+                count++;
+            } else if (board[i][i] == 'O') {
+                count--;
+            }
+        }
+        return count;
+    }
+
+
 
     // 2. Function to print the board 
     public static void printBoard(char[][] board) {
